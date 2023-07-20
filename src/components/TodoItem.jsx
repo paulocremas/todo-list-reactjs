@@ -38,7 +38,17 @@ export default function TodoItem({ todo , deleteTodo , editTodo}) {
                             checked={isChecked}
                         />
                     </ListItemIcon>
-                    <ListItemText primary={todo.text} className={isChecked ? 'checked-text' : ''} />
+                    <ListItemText 
+                    primary={todo.text} 
+                    className={isChecked ? 'checked-text' : ''} 
+                    primaryTypographyProps={{
+                        style: {
+                          maxHeight: '60px',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis', // Adicione a propriedade para as reticências
+                          whiteSpace: 'nowrap', // Impede que o texto seja quebrado em várias linhas
+                        }
+                      }}/>
                 </ListItemButton>
                 <IconButton onClick={() => setOpenDialog(true)}>
                     <EditIcon edge="end" aria-label="edit"/>
