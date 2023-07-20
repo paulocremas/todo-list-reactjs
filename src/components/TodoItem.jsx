@@ -9,6 +9,7 @@ import BackspaceIcon from '@mui/icons-material/Backspace';
 import { Paper } from '@mui/material';
 import EditTodoDialog from './EditTodoDialog';
 import EditIcon from '@mui/icons-material/Edit';
+import Tooltip from '@mui/material/Tooltip';
 
 
 export default function TodoItem({ todo , deleteTodo , editTodo}) {
@@ -29,27 +30,29 @@ export default function TodoItem({ todo , deleteTodo , editTodo}) {
         <EditTodoDialog editTodo={editTodo} open={openDialog} dialogHandler={dialogHandler} todo={todo} errorOff={''}/>
         <Paper style ={{ padding: "0.5em 0em" }}>
             <ListItem >
-                <ListItemButton role={undefined} dense onClick={handleTextClick}>
-                    <ListItemIcon>
-                        <Checkbox
-                            edge="start"
-                            tabIndex={-1}
-                            disableRipple
-                            checked={isChecked}
-                        />
-                    </ListItemIcon>
-                    <ListItemText 
-                    primary={todo.text} 
-                    className={isChecked ? 'checked-text' : ''} 
-                    primaryTypographyProps={{
-                        style: {
-                          maxHeight: '60px',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis', // Adicione a propriedade para as reticências
-                          whiteSpace: 'nowrap', // Impede que o texto seja quebrado em várias linhas
-                        }
-                      }}/>
-                </ListItemButton>
+                <Tooltip title={todo.text} placement="top">
+                        <ListItemButton role={undefined} dense onClick={handleTextClick}>
+                            <ListItemIcon>
+                                <Checkbox
+                                    edge="start"
+                                    tabIndex={-1}
+                                    disableRipple
+                                    checked={isChecked}
+                                />
+                            </ListItemIcon>
+                            <ListItemText 
+                            primary={todo.text} 
+                            className={isChecked ? 'checked-text' : ''} 
+                            primaryTypographyProps={{
+                                style: {
+                                maxHeight: '60px',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis', // Adicione a propriedade para as reticências
+                                whiteSpace: 'nowrap', // Impede que o texto seja quebrado em várias linhas
+                                }
+                            }}/>
+                        </ListItemButton>
+                    </Tooltip>
                 <IconButton onClick={() => setOpenDialog(true)}>
                     <EditIcon edge="end" aria-label="edit"/>
                 </IconButton>
