@@ -121,7 +121,6 @@ export default function Home() {
     //Esse trecho salva a lista de tarefas no navegador toda vez que ela é alterada
     React.useEffect(() => {
         if( todos !== null){
-            console.log(todos);
             window.localStorage.setItem('savedArray', JSON.stringify(todos));
     }}, [todos]);
 
