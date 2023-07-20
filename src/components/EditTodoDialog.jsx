@@ -61,6 +61,7 @@ export default function EditTodoDialog({ open , dialogHandler , todo , editTodo}
         onChange={handleChange}
         onFocus={handleFocus}
         className={isFocused ? 'focused' : ''}
+        inputProps={{ maxLength: 27 }}// Define o limite máximo de caracteres
         error={Boolean(error)} // Define o estado de erro do TextField
         onKeyDown={handleKeyDown}/> {/* Permite selecionar o OK usando enter */}
       </DialogContent>

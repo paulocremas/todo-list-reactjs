@@ -57,6 +57,7 @@ export default function Form({ addTodo , checkLastId}) {
               error={Boolean(error)} // Define o estado de erro do TextField
               helperText={error} // Define a mensagem de erro do TextField
               className={isFocused ? 'focused' : ''}
+              inputProps={{ maxLength: 27 }}// Define o limite máximo de caracteres
             />
             <Button variant="text" onClick={() => todoCreate(text)}>Add</Button>
         </div>
